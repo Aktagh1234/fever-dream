@@ -7,17 +7,23 @@
     <title>A Fever Dream</title>
 </head>
 <body>
-    <section class="zoom-stack">
-        <!--Image after entry gate-->
-        <img src="assets/5532919.jpg" alt="After Gate Image" class="after-gate-image">
+   <section class="zoom-stack">
+        <!-- Background behind cave -->
+        <div class="inside-rock-wrapper">
+            <img src="assets/inside-cave.png" alt="Inside Cave Image" class="inside-rock-image">
+            <div class="vignette"></div>
+        </div>
+        <!-- After gate wrapper (background) -->
+        <div class="after-wrapper">
+            <img src="assets/scene 1.png" alt="After Gate Image" class="after-gate-image">
+        </div>
 
-        <!--Entry gate-->
-        <img src="assets/entry-gate.png" alt="Enter Gate Image" class="enter-gate-image">
-
-        <!--glitter-->
-
+        <!-- Entry gate wrapper (foreground) -->
+        <div class="gate-wrapper">
+            <img src="assets/entry-gate.png" alt="Enter Gate Image" class="enter-gate-image">
+        </div>
     </section>
-
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>

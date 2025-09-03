@@ -11,8 +11,8 @@ let tl = gsap.timeline({
     }
 })
 
-// Phase 1: Gate zooms out
-tl.to(".gate-wrapper img", {
+// Phase 1: Gate + Tree zooms out
+tl.to([".gate-wrapper img", ".tree-wrapper img"], {
     scale: 10,
     opacity: 0,
     transformOrigin: "center center",
@@ -56,3 +56,18 @@ tl.to(".vignette", {
     duration: 2,
     ease: "power2.inOut"
 }, "<")
+
+// --- Mouse parallax for tree ---
+document.addEventListener("mousemove", (e) => {
+  // Get normalized mouse position (-0.5 to +0.5)
+  const x = (e.clientX / window.innerWidth - 0.5) * 2; 
+  const y = (e.clientY / window.innerHeight - 0.5) * 2; 
+
+  // Apply parallax to the tree image
+  gsap.to(".tree-wrapper img", {
+    x: x * 10,   // move left/right up to 30px
+    y: y * 10,   // move up/down up to 15px
+    ease: "power2.out",
+    duration: 0.6
+  });
+});

@@ -12,6 +12,21 @@ body{
     overflow: hidden;
 }
 
+.tree-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 3; /* above gate */
+  pointer-events: none; /* not clickable */
+}
+
+.tree-image {
+  position: absolute;
+  bottom: -6vh; 
+  left: 4vw;
+  width: min(40vw, 520px);
+  height: auto;
+}
+
 .gate-wrapper,
 .after-wrapper {
     position: absolute;

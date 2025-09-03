@@ -38,12 +38,19 @@ tl.to(".after-wrapper img", {
 }, ">")
 
 // Phase 4: Fake "cave entry" → fade to inside scene
+tl.to(".ocean-image", {
+    opacity: 1,
+    scale: 1.05,  // subtle zoom for depth
+    ease: "power2.inOut",
+    duration: 2
+}, ">");
+
 tl.to(".inside-rock-image", {
     opacity: 1,
     scale: 1.1,       // subtle zoom forward
     ease: "power2.inOut",
     duration: 2
-}, ">")
+}, "<"); // sync with ocean
 
 tl.to(".after-wrapper img", {
     opacity: 0,       // fade out after-gate once inside is visible
@@ -71,3 +78,25 @@ document.addEventListener("mousemove", (e) => {
     duration: 0.6
   });
 });
+
+// Phase 5: Dive through inside cave → reveal ocean
+tl.to(".inside-rock-image", {
+    scale: 6,            // zoom deep in
+    yPercent: -120,      // push downward into the ocean
+    transformOrigin: "center center",
+    ease: "power2.inOut",
+    duration: 3
+}, ">");
+
+tl.to(".inside-rock-image", {
+    opacity: 0,          // fade cave away once we’re “through” it
+    duration: 1.2,
+    ease: "power1.out"
+}, ">-0.8"); // overlap fade with end of zoom
+
+// Ocean stays visible (revealed fully)
+tl.to(".ocean-image", {
+    scale: 1,            // reset to normal scale
+    ease: "power2.out",
+    duration: 2
+}, "<");

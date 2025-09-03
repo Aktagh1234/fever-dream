@@ -1,3 +1,18 @@
+const lenis = new Lenis({
+   duration: 3.5,
+  easing: (t) => 1 - Math.pow(2, -10 * t),
+  smoothWheel: true,
+  smoothTouch: true,
+})
+
+// RAF loop
+function raf(time) {
+  lenis.raf(time)
+  ScrollTrigger.update() // keep ScrollTrigger synced
+  requestAnimationFrame(raf)
+}
+requestAnimationFrame(raf)
+
 gsap.registerPlugin(ScrollTrigger)
 
 let tl = gsap.timeline({
@@ -72,8 +87,8 @@ document.addEventListener("mousemove", (e) => {
 
   // Apply parallax to the tree image
   gsap.to(".tree-wrapper img", {
-    x: x * 10,   // move left/right up to 30px
-    y: y * 10,   // move up/down up to 15px
+    x: x * 20,   // move left/right up to 30px
+    y: y * 20,   // move up/down up to 15px
     ease: "power2.out",
     duration: 0.6
   });
